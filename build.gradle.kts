@@ -1,7 +1,7 @@
 plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
-    kotlin("multiplatform") version "1.5.10"
+    kotlin("multiplatform") version "1.6.10"
     kotlin("plugin.spring") version "1.5.21"
 }
 
@@ -17,7 +17,7 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.jvmTarget = "16"
         }
         withJava()
         testRuns["test"].executionTask.configure {
@@ -58,7 +58,7 @@ kotlin {
                 compileOnly("org.slf4j:slf4j-api:${extra["slf4j-api"]}")
 
                 //	Other Dependencies
-                implementation("org.jetbrains.kotlin:kotlin-reflect:${extra["kotlin-reflect"]}")
+                implementation("org.jetbrains.kotlin:kotlin-reflect:${extra["kotlin-version"]}")
             }
         }
         val jvmTest by getting {
@@ -66,7 +66,7 @@ kotlin {
 
                 //	Spring Dependencies
                 implementation("org.springframework.boot:spring-boot-starter:${extra["spring-boot-starter"]}")
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+                implementation("org.jetbrains.kotlin:kotlin-stdlib:${extra["kotlin-version"]}")
 
                 //	Test Dependencies
                 implementation("org.springframework.boot:spring-boot-starter-test:${extra["spring-boot-starter"]}")
