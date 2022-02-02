@@ -5,6 +5,8 @@ plugins {
     kotlin("plugin.spring") version "1.5.21"
 }
 
+apply("versions.gradle.kts")
+
 group = "com.vladkrava"
 version = "1.0-SNAPSHOT"
 
@@ -48,25 +50,26 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                compileOnly("org.springframework:spring-beans:5.3.13")
-                compileOnly("org.springframework:spring-context:5.3.13")
+                //	Spring Dependencies
+                compileOnly("org.springframework:spring-beans:${extra["spring-framework"]}")
+                compileOnly("org.springframework:spring-context:${extra["spring-framework"]}")
 
-                compileOnly("org.slf4j:slf4j-api:1.7.32")
+                //	Log Dependencies
+                compileOnly("org.slf4j:slf4j-api:${extra["slf4j-api"]}")
 
-                implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.10")
+                //	Other Dependencies
+                implementation("org.jetbrains.kotlin:kotlin-reflect:${extra["kotlin-reflect"]}")
             }
         }
         val jvmTest by getting {
             dependencies {
 
                 //	Spring Dependencies
-                implementation("org.springframework.boot:spring-boot-starter:2.6.1")
+                implementation("org.springframework.boot:spring-boot-starter:${extra["spring-boot-starter"]}")
                 implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
                 //	Test Dependencies
-                implementation("org.springframework.boot:spring-boot-starter-test:2.6.1")
-                implementation("org.springframework.kafka:spring-kafka-test:2.7.6")
-                implementation("org.assertj:assertj-core:3.21.0")
+                implementation("org.springframework.boot:spring-boot-starter-test:${extra["spring-boot-starter"]}")
             }
         }
         val jsMain by getting

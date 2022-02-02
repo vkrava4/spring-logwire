@@ -1,0 +1,5 @@
+extra["junit_version"] = "4.13.2"
+extra["kotlin-reflect"] = "1.5.10"
+extra["slf4j-api"] = "1.7.32"
+extra["spring-framework"] = "5.3.13"
+extra["spring-boot-starter"] = "2.6.1"
